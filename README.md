@@ -1,2 +1,2 @@
-# ExempleJPA
-Exemple JPA and Hibernate 
+# ExampleJPA
+Example JPA and Hibernate 
