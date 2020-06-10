@@ -11,11 +11,21 @@ public class Programa {
 	public static void main(String[] args) {
 		CrudService<Pessoa, Integer> pessoaService = new PessoaService();
 		try {
+			
+			System.out.println("Inserindo");
 			Pessoa p = new Pessoa();
 			p.setNome("Pedro");
 			p.setSobrenome("Augusto");
 			p.setIdade(10);			
 			pessoaService.insert(p);
+			
+			System.out.println("Alterando");
+			Pessoa p2 = pessoaService.byId(1);
+			p.setNome("Editou");
+			p.setSobrenome("Nome");
+			p.setIdade(100);			
+			pessoaService.update(p);
+			
 			
 			List<Pessoa> pessoas = pessoaService.all();
 			pessoas.forEach(pessoa -> {
@@ -25,6 +35,9 @@ public class Programa {
 				System.out.println("Não existem pessoas cadastradas.");
 			}
 			
+			System.out.println("Excluindo");
+			Pessoa p3 = pessoaService.byId(p.getId());		
+			pessoaService.delete(p);
 			
 		} catch (Exception e) {
 			System.out.println("Erro ao utilizar a JPA: " + e.getMessage());
